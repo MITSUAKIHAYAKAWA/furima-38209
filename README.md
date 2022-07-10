@@ -7,7 +7,7 @@
 | last_name_kana     | string | null: false               |
 | first_name_kana    | string | null: false               |
 | nickname           | string | null: false               |
-| birthday           | string | null: false               |
+| birthday           | date   | null: false               |
 | email              | string | null: false, unique: true |
 | encrypted_password | string | null: false               |
 
@@ -28,24 +28,25 @@
 | price              | integer    | null: false                    |
 | delivery_charge_id | integer    | null: false                    |
 | ship_form_id       | integer    | null: false                    |
-| user_id            | references | null: false, foreign_key: true |
+| user               | references | null: false, foreign_key: true |
 
 
 ## association
 
 - belongs_to :user
-- has_one :buys 
+- has_one :buy 
 
 ## addressesテーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
-| prefecture    | string     | null: false                    |
+| prefecture_id | integer    | null: false                    |
 | city          | string     | null: false                    |
 | block         | string     | null: false                    |
 | building      | string     |                                |
 | postcode      | string     | null: false                    |
 | phone_number  | string     | null: false                    |
+| buy           | references | null: false, foreign_key: true |
 
 ## association
 
@@ -57,7 +58,6 @@
 | ---------- | ---------- | ------------------------------ | 
 | user       | references | null: false, foreign_key: true |
 | product    | references | null: false, foreign_key: true |
-| address    | references | null: false, foreign_key: true |
 
 ## association
 
