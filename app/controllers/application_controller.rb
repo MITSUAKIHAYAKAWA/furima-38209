@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!, only: [:new]
   before_action :basic_auth
   before_action :congigure_permitted_parameters, if: :devise_controller?
 

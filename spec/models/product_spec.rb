@@ -18,6 +18,11 @@ RSpec.describe Product, type: :model do
         @product.valid?
         expect(@product.errors.full_messages).to include("Image can't be blank")
       end
+      it "product_nameが空だと出品できない" do
+        @product.product_name = ""
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Product name can't be blank")
+      end
       it "descriptionが空だと出品できない" do
         @product.description = ""
         @product.valid?
@@ -67,6 +72,11 @@ RSpec.describe Product, type: :model do
         @product.price = 10000000
         @product.valid?
         expect(@product.errors.full_messages).to include("Price must be less than or equal to 9999999")
+      end
+      it "userが紐づいていないと出品できない" do
+        @product.user = nil
+        @product.valid?
+        expect(@product.errors.full_messages).to include("User must exist")
       end
     end
   end
