@@ -10,9 +10,8 @@ class User < ApplicationRecord
   validates :last_name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
   validates :first_name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
   validates :birthday, presence: true
-  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
+  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
   validates :password, format: { with: PASSWORD_REGEX }
-  
-  has_many :products
 
+  has_many :products
 end
