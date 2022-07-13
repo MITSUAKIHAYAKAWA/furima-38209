@@ -34,7 +34,6 @@ class ItemsController < ApplicationController
     end
   end
 
-
   private
 
   def product_params
@@ -47,9 +46,6 @@ class ItemsController < ApplicationController
   end
 
   def move_to_index
-    unless user_signed_in? && current_user.id == @product.user.id
-      redirect_to root_path
-    end
+    redirect_to root_path unless user_signed_in? && current_user.id == @product.user.id
   end
-
 end
