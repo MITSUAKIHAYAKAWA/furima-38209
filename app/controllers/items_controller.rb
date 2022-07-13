@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
 
 
   def index
+    @products = Product.all.order("product_name DESC").order("price DESC").order("delivery_charge_id DESC")
   end
 
   def new
