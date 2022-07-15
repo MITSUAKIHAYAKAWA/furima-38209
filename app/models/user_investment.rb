@@ -8,8 +8,7 @@ class UserInvestment
     validates :city
     validates :block
     validates :postcode, format: { with: /\A\d{3}[-]\d{4}\z/ }  
-    validates :phone_number, format: { with: /\A\d{10,11}\z/ }
-    validates :order_id
+    validates :phone_number, format: { with: /\A\d{10,11}\z/ }    
   end
   validate :building
   

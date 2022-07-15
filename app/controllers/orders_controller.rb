@@ -6,7 +6,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    binding.pry
     @user_investment = UserInvestment.new(order_params)
     if @user_investment.valid?
       @user_investment.save
