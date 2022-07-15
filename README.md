@@ -46,13 +46,13 @@
 | building      | string     |                                |
 | postcode      | string     | null: false                    |
 | phone_number  | string     | null: false                    |
-| buy           | references | null: false, foreign_key: true |
+| order         | references | null: false, foreign_key: true |
 
 ## association
 
 - belongs_to :buy
 
-## buysテーブル
+## ordersテーブル
 
 | Column     | Type       | Options                        |
 | ---------- | ---------- | ------------------------------ | 
