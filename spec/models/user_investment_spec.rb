@@ -7,7 +7,7 @@ RSpec.describe UserInvestment, type: :model do
 
   describe "商品購入機能" do
     context "商品が購入できるとき" do
-      it "cvcとnumberとexp_monthとexp_yearとphone_numberとprefecture_idとcityとblockとbuildingとpostcodeがあれば購入できる" do
+      it "tokenとphone_numberとprefecture_idとcityとblockとbuildingとpostcodeがあれば購入できる" do
         expect(@user_investment).to be_valid
       end
       it "buildingが空でも購入できる" do
@@ -20,26 +20,11 @@ RSpec.describe UserInvestment, type: :model do
       end
     end
     context "商品購入できないとき" do
-      #it "cvcが空だと購入できない" do
-        #@user_investment.cvc = nil
-        #@user_investment.valid?
-        #expect(@user_investment.errors.full_messages).to include("")
-      #end
-      #it "numberが空だと購入できない" do
-        #@user_investment.number = nil
-        #@user_investment.valid?
-        #expect(@user_investment.errors.full_messages).to include("")
-      #end
-      #it "exp_monthが空だと購入できない" do
-        #@user_investment.exp_month = nil
-        #@user_investment.valid?
-        #expect(@user_investment.errors.full_messages).to include("")
-      #end
-      #it "exp_yearが空だと購入できない" do
-        #@user_investment.exp_year = nil
-        #@user_investment.valid?
-        #expect(@user_investment.errors.full_messages).to include("")
-      #end
+      it "tokenが空だと購入できない" do
+        @user_investment.token = nil
+        @user_investment.valid?
+        expect(@user_investment.errors.full_messages).to include("Token can't be blank")
+      end
       it "phone_numberが空だと登録できない" do
         @user_investment.phone_number = nil
         @user_investment.valid?

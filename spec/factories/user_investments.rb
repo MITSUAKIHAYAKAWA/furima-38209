@@ -1,9 +1,6 @@
 FactoryBot.define do
   factory :user_investment do
-    #cvc                 { 123 }
-    #exp_year            { 33 }
-    #exp_month           { 3 }
-    #number              { 4242424242424242 }
+    token               { "tok_abcdefghijk00000000000000000" }
     postcode            { "123-2345" }
     prefecture_id       { Faker::Number.between(from: 2, to: 48) }
     city                { Faker::Lorem.sentence }
