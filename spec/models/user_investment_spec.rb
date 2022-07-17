@@ -60,6 +60,31 @@ RSpec.describe UserInvestment, type: :model do
         @user_investment.valid?
         expect(@user_investment.errors.full_messages).to include('Postcode is invalid')
       end
+      it "postcodeが(-)なしだと購入できない" do
+        @user_investment.postcode = '1234567'
+        @user_investment.valid?
+        expect(@user_investment.errors.full_messages).to include('Postcode is invalid')
+      end
+      it "phone_numberが9桁いかだと購入できない" do
+        @user_investment.phone_number = '090000000'
+        @user_investment.valid?
+        expect(@user_investment.errors.full_messages).to include('Phone number is invalid')
+      end
+      it "phone_numberが12桁以上だと購入できない" do
+        @user_investment.phone_number = '090000000000'
+        @user_investment.valid?
+        expect(@user_investment.errors.full_messages).to include('Phone number is invalid')
+      end
+      it "user_idが空だと購入できない" do
+        @user_investment.user_id = nil
+        @user_investment.valid?
+        expect(@user_investment.errors.full_messages).to include("User can't be blank")
+      end
+      it "product_idが空だと購入できない" do
+        @user_investment.product_id = nil
+        @user_investment.valid?
+        expect(@user_investment.errors.full_messages).to include("Product can't be blank")
+      end
     end
   end
 end

@@ -7,5 +7,7 @@ FactoryBot.define do
     block               { Faker::Lorem.sentence }
     building            { Faker::Lorem.sentence }
     phone_number        { Faker::Number.leading_zero_number(digits: 11) }
+    user_id             { Faker::Number.number(digits: 2) }
+    product_id          { Faker::Number.number(digits: 2) }
   end
 end
