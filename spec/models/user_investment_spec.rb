@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe UserInvestment, type: :model do
   before do
-    @user_investment = FactoryBot.build(:user_investment)
+    user = FactoryBot.create(:user)
+    product = FactoryBot.create(:product)
+    @user_investment = FactoryBot.build(:user_investment, user_id: user.id, product_id: product.id)
   end
 
   describe '商品購入機能' do
