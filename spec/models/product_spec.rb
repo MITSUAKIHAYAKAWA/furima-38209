@@ -15,67 +15,67 @@ RSpec.describe Product, type: :model do
       it 'imageが空だと出品できない' do
         @product.image = nil
         @product.valid?
-        expect(@product.errors.full_messages).to include("Image can't be blank")
+        expect(@product.errors.full_messages).to include("画像を入力してください")
       end
       it 'product_nameが空だと出品できない' do
         @product.product_name = ''
         @product.valid?
-        expect(@product.errors.full_messages).to include("Product name can't be blank")
+        expect(@product.errors.full_messages).to include("商品名を入力してください")
       end
       it 'descriptionが空だと出品できない' do
         @product.description = ''
         @product.valid?
-        expect(@product.errors.full_messages).to include("Description can't be blank")
+        expect(@product.errors.full_messages).to include("商品の説明を入力してください")
       end
       it "category_idが'---'だと出品できない" do
         @product.category_id = 1
         @product.valid?
-        expect(@product.errors.full_messages).to include('Category must be other than 1')
+        expect(@product.errors.full_messages).to include('カテゴリーは1以外の値にしてください')
       end
       it "condition_idが'---'だと出品できない" do
         @product.condition_id = 1
         @product.valid?
-        expect(@product.errors.full_messages).to include('Condition must be other than 1')
+        expect(@product.errors.full_messages).to include('商品の状態は1以外の値にしてください')
       end
       it "delivery_charge_idが'---'だと出品できない" do
         @product.delivery_charge_id = 1
         @product.valid?
-        expect(@product.errors.full_messages).to include('Delivery charge must be other than 1')
+        expect(@product.errors.full_messages).to include('配送料の負担は1以外の値にしてください')
       end
       it "delivery_time_idが'---'だと出品できない" do
         @product.delivery_time_id = 1
         @product.valid?
-        expect(@product.errors.full_messages).to include('Delivery time must be other than 1')
+        expect(@product.errors.full_messages).to include('発送までの日数は1以外の値にしてください')
       end
       it "ship_form_idが'---'だと出品できない" do
         @product.ship_form_id = 1
         @product.valid?
-        expect(@product.errors.full_messages).to include('Ship form must be other than 1')
+        expect(@product.errors.full_messages).to include('発送元の地域は1以外の値にしてください')
       end
       it 'priceが空だと出品できない' do
         @product.price = ''
         @product.valid?
-        expect(@product.errors.full_messages).to include("Price can't be blank")
+        expect(@product.errors.full_messages).to include("価格を入力してください")
       end
       it 'priceが全角だと出品できない' do
         @product.price = '５００'
         @product.valid?
-        expect(@product.errors.full_messages).to include('Price is not a number')
+        expect(@product.errors.full_messages).to include('価格は数値で入力してください')
       end
       it 'priceが300円未満だと出品できない' do
         @product.price = 299
         @product.valid?
-        expect(@product.errors.full_messages).to include('Price must be greater than or equal to 300')
+        expect(@product.errors.full_messages).to include('価格は300以上の値にしてください')
       end
       it 'priceが10,000,000以上だと出品できない' do
         @product.price = 10_000_000
         @product.valid?
-        expect(@product.errors.full_messages).to include('Price must be less than or equal to 9999999')
+        expect(@product.errors.full_messages).to include('価格は9999999以下の値にしてください')
       end
       it 'userが紐づいていないと出品できない' do
         @product.user = nil
         @product.valid?
-        expect(@product.errors.full_messages).to include('User must exist')
+        expect(@product.errors.full_messages).to include('Userを入力してください')
       end
     end
   end
